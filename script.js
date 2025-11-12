@@ -1,35 +1,30 @@
-// Important Dates
-const loveStartDate = new Date("2023-11-12T23:00:00"); // Relationship start date
+// Data de início do relacionamento
+const loveStartDate = new Date("2023-11-12T23:00:00");
 
-function updateAllCounters() {
+function updateLoveDuration() {
   const now = new Date();
-  
-  // Update Love Duration
-  updateLoveDuration(now);
+  const totalDiff = now - loveStartDate;
 
-}
+  // Calcula anos completos
+  let years = now.getFullYear() - loveStartDate.getFullYear();
+  const lastAnniversary = new Date(loveStartDate);
+  lastAnniversary.setFullYear(loveStartDate.getFullYear() + years);
 
-function updateLoveDuration(now) {
-  const difference = now - loveStartDate;
-  
-  // Calculate years
-  const loveStartYear = loveStartDate.getFullYear();
-  const currentYear = now.getFullYear();
-  let years = currentYear - loveStartYear;
-  
-  // Adjust if birthday hasn't occurred yet this year
-  const tempDate = new Date(loveStartDate);
-  tempDate.setFullYear(currentYear);
-  if (now < tempDate) {
+  // Corrige se o aniversário deste ano ainda não chegou
+  if (now < lastAnniversary) {
     years--;
+    lastAnniversary.setFullYear(loveStartDate.getFullYear() + years);
   }
-  
-  // Calculate days, hours, minutes, seconds
-  const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-  
+
+  // Tempo desde o último aniversário
+  const diffSinceLast = now - lastAnniversary;
+
+  const days = Math.floor(diffSinceLast / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diffSinceLast % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((diffSinceLast % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((diffSinceLast % (1000 * 60)) / 1000);
+
+  // Atualiza elementos do HTML
   document.getElementById("love-years").textContent = years;
   document.getElementById("love-days").textContent = days;
   document.getElementById("love-hours").textContent = hours.toString().padStart(2, "0");
@@ -37,28 +32,6 @@ function updateLoveDuration(now) {
   document.getElementById("love-seconds").textContent = seconds.toString().padStart(2, "0");
 }
 
-function updateNextAnniversary(now) {
-  // Get next anniversary date (this year or next year)
-  const nextAnniv = new Date(loveStartDate);
-  nextAnniv.setFullYear(now.getFullYear());
-  
-  if (now > nextAnniv) {
-    nextAnniv.setFullYear(now.getFullYear() + 1);
-  }
-  
-  const difference = nextAnniv - now;
-  
-  const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-  
-  document.getElementById("anniv-days").textContent = days;
-  document.getElementById("anniv-hours").textContent = hours.toString().padStart(2, "0");
-  document.getElementById("anniv-minutes").textContent = minutes.toString().padStart(2, "0");
-  document.getElementById("anniv-seconds").textContent = seconds.toString().padStart(2, "0");
-}
-
-// Initialize and update every second
-updateAllCounters();
-setInterval(updateAllCounters, 1000);
+// Inicializa e atualiza a cada segundo
+updateLoveDuration();
+setInterval(updateLoveDuration, 1000);
