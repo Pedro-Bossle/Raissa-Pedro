@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon"
+        href="https://raw.githubusercontent.com/AATHILDUCKY/ethical-hacking-short-notes/main/aathil%20ducky.png"
+        type="image/x-icon" />
+    <title>Pedro & Raíssa</title>
+    <meta name="description" />
+    <meta name="keywords"
+        content="aathil, ducky, love, shaniya, love journey, love story, relationship journey, 2023.10.21" />
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+    <style>
+        .love-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .love-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(236, 72, 153, 0.3);
+        }
+
+        .highlight {
+            color: #ec4899;
+            font-weight: bold;
+        }
+
+        .heart {
+            color: #ec4899;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-white min-h-screen">
+
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">
+                Pedro <span class="heart">❤</span> Raíssa
+            </h1>
+            <p class="text-xl text-pink-400">Juntos desde 12.11.2023</p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <!-- Love Duration Card -->
+            <div class="love-card rounded-xl p-6">
+                <h2 class="text-2xl font-bold mb-4 text-center">Dias juntos</h2>
+                <div class="space-y-2">
+                    <p><span class="highlight" id="love-years">0</span> anos</p>
+                    <p><span class="highlight" id="love-days">0</span> dias</p>
+                    <p><span class="highlight" id="love-hours">0</span> horas</p>
+                    <p><span class="highlight" id="love-minutes">0</span> minutos</p>
+                    <p><span class="highlight" id="love-seconds">0</span> segundos</p>
+                </div>
+            </div>
+            <!-- Love Message Card -->
+            <div class="love-card rounded-xl p-6 flex items-center justify-center">
+                <div class="text-center">
+                    <p class="text-2xl mb-4">Raíssa meu amor, mais um ano juntos. Eu te amo muito, todos os momentos que
+                        estamos juntos eu sou mais feliz. Sei que as vezes eu sou meio sarna, mas nunca se esqueça que
+                        te amo demaisssss.<br> Os presentes são simples mas são de coração, não sei o que escrever
+                        direito mas saiba que pode contar sempre comigo, vou estar contigo em todos os momentos e quero
+                        ficar velinho ao seu lado <3 </p>
+                            <span class="heart text-4xl">❤</span>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
